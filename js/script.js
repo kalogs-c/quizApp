@@ -19,6 +19,8 @@ const loadQuiz = () => {
     b_text.textContent = currentQuizData.b
     c_text.textContent = currentQuizData.c
     d_text.textContent = currentQuizData.d
+
+    answer = undefined
 }
 
 const getSelected = () => {
@@ -30,21 +32,38 @@ const getSelected = () => {
 }
 
 const checkCorrectAnswer = () => {
-    if (answer === quizData[currentQuestion].correct) {
-        return true
+    if (answer == quizData[currentQuestion].correct) {
+        console.log(answer, quizData[currentQuestion].correct)
+        score++
     }
+}
+
+const uncheckAnswers = () => {
+    a.checked = false
+    b.checked = false
+    c.checked = false
+    d.checked = false
 }
 
 loadQuiz()
 
 submitButton.addEventListener('click', () => {
     getSelected()
-    console.log(answer)
-    if (checkCorrectAnswer() === true) {
-        currentQuestion++
-
-        if (currentQuestion < quizData.length) {
-            loadQuiz()
-        }
+    
+    if (!answer) {
+        alert('selecione uma resposta')
     }
+    if (answer) {
+        checkCorrectAnswer()
+        uncheckAnswers()
+        currentQuestion++
+    }
+    if (currentQuestion === quizData.length) {
+        alert(`acabou. sua pontuaçao: ${score}`)
+        score = 0
+        currentQuestion = 0
+    }
+    console.log(currentQuestion)
+
+    loadQuiz()
 })
