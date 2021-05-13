@@ -6,7 +6,7 @@ const quizData = [
         c: '26',
         d: '110',
         correct: 'c'
-    }, 
+    },
     {
         question: 'What is the most used programming language in 2019?',
         a: 'Java',
@@ -23,7 +23,7 @@ const quizData = [
         d: 'Ivan Soldano',
         correct: 'b'
     },
-    { 
+    {
         question: 'What does HTML stand for?',
         a: 'Hyper text markup language',
         b: 'Hyper turbo markup language',
