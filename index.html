@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,31 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Quiz</title>
 </head>
+
 <body>
-    
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h3>Question</h3>
+        <ul>
+            <li>
+                <input type="radio" id="a" name="answer"><label for="a">Question</label>
+            </li>
+            <li>
+                <input type="radio" id="b" name="answer"><label for="b">Question</label>
+            </li>
+            <li>
+                <input type="radio" id="c" name="answer"><label for="c">Question</label>
+            </li>
+            <li>
+                <input type="radio" id="d" name="answer"><label for="d">Question</label>
+            </li>
+        </ul>
+        </div>
+        <button>Submit</button>
+    </div>
 
     <script src="js/script.js"></script>
+    <script src="js/quizData.js"></script>
 </body>
+
 </html>
