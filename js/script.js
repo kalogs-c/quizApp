@@ -7,9 +7,6 @@ const c_text = document.querySelector(".c_text")
 const d_text = document.querySelector(".d_text")
 const submitButton = document.querySelector(".submit-button")
 
-// Play again and results
-
-
 let currentQuestion = 0
 let score = 0
 let answer = undefined
@@ -47,13 +44,50 @@ const uncheckAnswers = () => {
     d.checked = false
 }
 
+// Play again and results
+const resultsDiv = document.querySelector('.results')
+const scoreH2 = document.querySelector('.results > h2')
+const playAgainButton = document.querySelector('.results > button')
+const quizContainer = document.querySelector('.quiz-container')
+
+const showResults = () => {
+    quizContainer.style.opacity = '0'
+    quizContainer.style.display = 'none'
+    resultsDiv.style.display = 'flex'
+    scoreH2.textContent = score
+
+    score = 0
+    currentQuestion = 0
+}
+
+playAgainButton.addEventListener('click', () => {
+    quizContainer.style.opacity = '1'
+    quizContainer.style.display = 'block'
+    resultsDiv.style.display = 'none'
+    loadQuiz()
+})
+
+// Alert
+const alertBox = document.querySelector('.alert')
+const alertButton = document.querySelector('.alert > button')
+
+const showAlert = () => {
+    quizContainer.classList.add('blur')
+    alertBox.style.display = 'flex'
+}
+
+alertButton.addEventListener('click', () => {
+    quizContainer.classList.remove('blur') 
+    alertBox.style.display = 'none'
+})
+
 loadQuiz()
 
 submitButton.addEventListener('click', () => {
     getSelected()
     
     if (!answer) {
-        alert('selecione uma resposta')
+        showAlert()
     }
     if (answer) {
         checkCorrectAnswer()
@@ -61,9 +95,7 @@ submitButton.addEventListener('click', () => {
         currentQuestion++
     }
     if (currentQuestion === quizData.length) {
-        alert(`acabou. sua pontuaçao: ${score}`)
-        score = 0
-        currentQuestion = 0
+        showResults()
     }
     console.log(currentQuestion)
 
