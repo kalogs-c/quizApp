@@ -1,3 +1,4 @@
+// Quiz Game elements
 const questionText = document.querySelector(".question")
 const answersElements = document.querySelectorAll(".answer")
 const a_text = document.querySelector(".a_text")
@@ -5,6 +6,9 @@ const b_text = document.querySelector(".b_text")
 const c_text = document.querySelector(".c_text")
 const d_text = document.querySelector(".d_text")
 const submitButton = document.querySelector(".submit-button")
+
+// Play again and results
+
 
 let currentQuestion = 0
 let score = 0
@@ -14,7 +18,6 @@ const loadQuiz = () => {
     const currentQuizData = quizData[currentQuestion]
 
     questionText.textContent = currentQuizData.question
-
     a_text.textContent = currentQuizData.a
     b_text.textContent = currentQuizData.b
     c_text.textContent = currentQuizData.c
@@ -33,7 +36,6 @@ const getSelected = () => {
 
 const checkCorrectAnswer = () => {
     if (answer == quizData[currentQuestion].correct) {
-        console.log(answer, quizData[currentQuestion].correct)
         score++
     }
 }
